@@ -1,4 +1,4 @@
-package DBcon;
+package Database;
 
 import java.sql.*;
 

@@ -1,6 +1,6 @@
 
 import AdminDao.*;
-import DBcon.*;
+import Database.*;
 import UserDao.customer;
 
 public class App extends scan {
