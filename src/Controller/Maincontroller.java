@@ -5,7 +5,7 @@ import Model.login;
 import Views.*;
 
 public class Maincontroller {
-   public static void being() {
+   public static void begin() {
 
       int n = start.login();
 
@@ -13,37 +13,48 @@ public class Maincontroller {
       {
          Users u = start.siginin();
          u = login.signin(u);
-         if (u.getrole().equals("Admin")) 
+         if (u.getRole().equals("Admin")) 
          {
-            admin.menu();
+            Admincontroller.admin();
          }
-         else if(u.getrole().equals("Customer"))
+         else if(u.getRole().equals("Customer"))
          {
-            customer.menu();
+            Customercontroller.User();
          }
-         else if(u.gets_role().equals("Receptionist"))
+         else if(u.getS_role().equals("Receptionist"))
          {
-            Receptionist.menu();
+            Receptionistcontroller.emp_rep();
          }
-         else if(u.gets_role().equals("Stock Checker"))
+         else if(u.getS_role().equals("Stock Checker"))
          {
-            Stockchecker.menu();
+           StockCheckercontroller.emp_stcheck();
          }
       } 
+
       else if (n == 2) 
       {
          Users u = start.siginup();
          u=login.signup(u);
-         if(!login.checkuser(u.getemail()))
+         if(!login.checkuser(u.getEmail()))
          {
-         if(u.getrole().equals("Customer"))
+         if(u.getRole().equals("Customer"))
          {
             customer.menu();
          }
       }
+
       else{
          System.out.println("User Already Exists");
       }
+      }
+
+      else if(n == 3)
+      {
+         return;
+      }
+      
+      else{
+         System.out.println("Enter a Valid Input");
       }
    }
 }

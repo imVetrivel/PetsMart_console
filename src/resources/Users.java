@@ -16,59 +16,60 @@ public class Users {
 
     private long c_num;
 
-    public String getname() {
+    public String getName() {
         return name;
     }
 
-    public long getc_num() {
-        return c_num;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getrole() {
+    public String getRole() {
         return role;
     }
 
-    public String getemail() {
-        return email;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public String getpassword() {
-        return password;
-    }
-
-    public String gets_role() {
-        return s_role;
-    }
-
-    public int getid() {
+    public int getId() {
         return id;
     }
 
-    public void setname(String n) {
-        name = n;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setc_num(long n) {
-        c_num = n;
+    public String getEmail() {
+        return email;
     }
 
-    public void setrole(String r) {
-        role = r;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setemail(String mail) {
-        email = mail;
+    public String getPassword() {
+        return password;
     }
 
-    public void sets_role(String role) {
-        s_role = role;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setpassword(String pass) {
-        password = pass;
+    public String getS_role() {
+        return s_role;
     }
 
-    public void setid(int i) {
-        id = i;
+    public void setS_role(String s_role) {
+        this.s_role = s_role;
     }
+
+    public long getC_num() {
+        return c_num;
+    }
+
+    public void setC_num(long c_num) {
+        this.c_num = c_num;
+    }
+    
 }

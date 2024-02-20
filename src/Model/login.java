@@ -6,31 +6,33 @@ import connections.*;
 import resources.*;
 
 public class login {
+   
+    
     public static Users signin(Users user) {
         try {
             String query = "select * from member_details where email = ? and password = ?";
             Connection con = dbCon.getCon();
             PreparedStatement pst = con.prepareStatement(query);
-            pst.setString(1, user.getemail());
-            pst.setString(2, user.getpassword());
+            pst.setString(1, user.getEmail());
+            pst.setString(2, user.getPassword());
             ResultSet r = pst.executeQuery();
             r.next();
 
             Users m = new Users();
-            m.setid(r.getInt(1));
-            m.setname(r.getString(2));
-            m.setemail(user.getemail());
-            m.setpassword(user.getpassword());
-            m.setrole(r.getString(5));
+            m.setId(r.getInt(1));
+            m.setName(r.getString(2));
+            m.setEmail(user.getEmail());
+            m.setPassword(user.getPassword());
+            m.setRole(r.getString(5));
 
-            if (m.getrole().equals("Employee")) 
+            if (m.getRole().equals("Employee")) 
             {
                 String q = "select specific_role from employee_datails where id=?";
                 PreparedStatement p = con.prepareStatement(q);
-                p.setInt(1, m.getid());
+                p.setInt(1, m.getId());
                 ResultSet r1 = p.executeQuery();
                 r1.next();
-                m.sets_role(r1.getString(1));
+                m.setS_role(r1.getString(1));
             }
             return m;
         } 
@@ -72,28 +74,28 @@ public class login {
         {
             Connection con = dbCon.getCon();
             PreparedStatement pst = con.prepareStatement(query);
-            pst.setString(1, u.getname());
-            pst.setString(2, u.getemail());
-            pst.setString(3, u.getpassword());
+            pst.setString(1, u.getName());
+            pst.setString(2, u.getEmail());
+            pst.setString(3, u.getPassword());
             pst.setString(4, "Customer");
             pst.executeUpdate();
             
             PreparedStatement p = con.prepareStatement(q1);
-            p.setString(1, u.getemail());
-            p.setString(2, u.getpassword());
+            p.setString(1, u.getEmail());
+            p.setString(2, u.getPassword());
             ResultSet r = p.executeQuery();
             r.next();
 
-            m.setid(r.getInt(1));
-            m.setemail(u.getemail());
-            m.setc_num(u.getc_num());
-            m.setname(u.getname());
-            m.setpassword(u.getpassword());
-            m.setrole("Customer");
+            m.setId(r.getInt(1));
+            m.setEmail(u.getEmail());
+            m.setC_num(u.getC_num());
+            m.setName(u.getName());
+            m.setPassword(u.getPassword());
+            m.setRole("Customer");
 
             PreparedStatement p1=con.prepareStatement(query1);
-            p1.setInt(1, m.getid());
-            p1.setLong(2, m.getc_num());
+            p1.setInt(1, m.getId());
+            p1.setLong(2, m.getC_num());
             p1.executeUpdate();
             return m;
         }
