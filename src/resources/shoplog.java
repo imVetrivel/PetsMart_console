@@ -2,7 +2,6 @@ package resources;
 
 import java.sql.Date;
 
-import javax.xml.crypto.Data;
 
 public class shoplog {
     

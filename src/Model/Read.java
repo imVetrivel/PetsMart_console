@@ -3,10 +3,7 @@ package Model;
 import java.sql.*;
 import java.util.ArrayList;
 import connections.*;
-import resources.customer_details;
-import resources.employee_details;
-import resources.salary;
-import resources.shoplog;
+import resources.*;
 
 public class Read {
 
@@ -57,6 +54,25 @@ public class Read {
         return c;
     }
 
+    public static String getbreed(int id)
+    {
+        String breed;
+        String query = "select breed from animal_details where a_id=?";
+
+        try {
+            Connection con = dbCon.getCon();
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setInt(1, id);
+            ResultSet r = pst.executeQuery();
+            r.next();
+             breed=r.getString(1);
+             return breed;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
     public static ArrayList<salary> getsalary() {
         String query = "select * from salary";
         ArrayList<salary> s = new ArrayList<>();
@@ -84,8 +100,7 @@ public class Read {
             Connection con = dbCon.getCon();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
-            while(rs.next())
-            {
+            while (rs.next()) {
                 shoplog sh = new shoplog();
                 sh.setId(rs.getInt(1));
                 sh.setName(rs.getString(2));
@@ -102,5 +117,106 @@ public class Read {
         }
 
         return s;
+    }
+
+    public static ArrayList<operations> getOperation()
+    {
+        String query = "select * from operations";
+        ArrayList<operations> o = new ArrayList<>();
+        try {
+            Connection con = dbCon.getCon();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            while(rs.next())
+            {
+                operations op = new operations();
+                op.setOperation(rs.getString(1));
+                op.setPrice(rs.getInt(2));
+                op.setType(rs.getString(3));
+
+                o.add(op);
+            }
+
+
+        } catch (Exception e) {
+            System.out.println("Something went Wrong");
+        }
+        return o;
+    }
+
+    public static ArrayList<category> getpetcategory() {
+        String query = "select * from category";
+        ArrayList<category> c = new ArrayList<>();
+        try {
+            Connection con = dbCon.getCon();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                category s = new category();
+                s.setId(rs.getInt(1));
+                s.setCategory(rs.getString(2));
+                s.setVarities(rs.getInt(3));
+
+                c.add(s);
+            }
+        } catch (Exception e) {
+            System.out.println("Something went Wrong");
+        }
+        return c;
+    }
+
+    public static ArrayList<variety> getvariety() {
+        String query = "select c.category,v.Breed,v.count,v.v_id from category as c join variety as v on c.category_id=v.category_id";
+        ArrayList<variety> v = new ArrayList<>();
+
+        try {
+            Connection con = dbCon.getCon();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                variety va = new variety();
+                va.setCategory(rs.getString(1));
+                va.setBreed(rs.getString(2));
+                va.setCount(rs.getInt(3));
+                va.setV_id(rs.getInt(4));
+
+                v.add(va);
+            }
+        } catch (Exception e) {
+            System.out.println("Something went Wrong");
+        }
+
+        return v;
+    }
+
+    public static ArrayList<pets> getpets() {
+        String query = "select a.a_id,c.category,a.Breed,a.gender,a.age,a.price from category as c join animal_details as a on c.category_id=a.c_id";
+        ArrayList<pets> p = new ArrayList<>();
+
+        try {
+            Connection con = dbCon.getCon();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                pets pet = new pets();
+
+                pet.setA_id(rs.getInt(1));
+                pet.setCategory(rs.getString(2));
+                pet.setBreed(rs.getString(3));
+                pet.setGender(rs.getString(4));
+                pet.setA_age(rs.getInt(5));
+                pet.setPrice(rs.getInt(6));
+
+                p.add(pet);
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+
+        return p;
     }
 }

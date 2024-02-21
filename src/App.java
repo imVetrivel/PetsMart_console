@@ -6,7 +6,7 @@ public class App {
         System.out.println("----  WELCOME TO PETS MART  ----");
         System.out.println("--------------------------------");
         System.out.println();
-        // Maincontroller.begin();
-        Admincontroller.admin();
+        Maincontroller.begin();
+        // Admincontroller.admin();
     }
 }

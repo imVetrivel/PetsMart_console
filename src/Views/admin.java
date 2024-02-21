@@ -11,6 +11,7 @@ public class admin  {
 
         System.out.println("Enter 1 to Display Details");
         System.out.println("Enter 2 to Update Details");
+        System.out.println("Enter 3 to Exit");
         int n = ab.nextInt();
 
         return n;
@@ -35,9 +36,19 @@ public class admin  {
         System.out.println("Enter 2 to Delete a Pet");
         System.out.println("Enter 3 to Update Price of Pet");
         System.out.println("Enter 4 to Update Salary of Employee");
+        System.out.println("Enter 5 to Update Training or HealthCheck Price");
 
         int n = ab.nextInt();
 
+        return n;
+    }
+
+    public static int dispPets()
+    {
+        System.out.println("Enter 1 to View more");
+        System.out.println("Enter 2 to Back");
+
+        int n = ab.nextInt();
         return n;
     }
 }

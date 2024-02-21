@@ -1,5 +1,7 @@
 package resources;
 
+import java.sql.Date;
+
 public class customer_details {
     
     private String name;
@@ -7,6 +9,28 @@ public class customer_details {
     private int id;
 
     private long num;
+
+    private Date date;
+
+    private String purpose;
+
+    
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
+    }
 
     public String getName() {
         return name;
