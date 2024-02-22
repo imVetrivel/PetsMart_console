@@ -28,17 +28,19 @@ public class admindisplay {
 
     public static void s_details(ArrayList<salary> s) {
         System.out.println();
-        System.out.println("-----------------------------");
+        System.out.println("-------------------------------------");
         System.out.printf("| %-15s |", "Role");
         System.out.printf(" %-7s |", "Salary");
+        System.out.printf(" %-4s |", "S_id");
         System.out.println();
-        System.out.println("-----------------------------");
+        System.out.println("-------------------------------------");
         for (int i = 0; i < s.size(); i++) {
             System.out.printf("| %-15s |", s.get(i).getRole());
             System.out.printf(" %-7d |", s.get(i).getSalary());
+            System.out.printf(" %-4d |", s.get(i).getId());
             System.out.println();
         }
-        System.out.println("-----------------------------");
+        System.out.println("-------------------------------------");
     }
 
     public static void cust_details(ArrayList<customer_details> c) {
@@ -119,6 +121,27 @@ public class admindisplay {
             System.out.println();
         }
         System.out.println("----------------------------------------");
+    }
+
+    public static void getservices(ArrayList<operations> o)
+    {
+        System.out.println();
+        System.out.println("----------------------------------------");
+        System.out.printf("| %-12s |", "Service");
+        System.out.printf(" %-6s |", "price");
+        System.out.printf(" %-9s |", "Pet_type");
+        System.out.println();
+        System.out.println("----------------------------------------");
+        
+        for(int i=0;i<o.size();i++)
+        {
+            System.out.printf("| %-12s |",o.get(i).getOperation());
+            System.out.printf(" %-6d |", o.get(i).getPrice());
+            System.out.printf(" %-9s |", o.get(i).getType());
+            System.out.println();
+        }
+        System.out.println("----------------------------------------");
+
     }
 
     public static void getpets(ArrayList<pets> p) {

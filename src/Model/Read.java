@@ -84,6 +84,7 @@ public class Read {
                 salary sa = new salary();
                 sa.setRole(rs.getString(1));
                 sa.setSalary(rs.getInt(2));
+                sa.setId(rs.getInt(3));
                 s.add(sa);
             }
         } catch (Exception e) {
@@ -214,7 +215,7 @@ public class Read {
                 p.add(pet);
             }
         } catch (Exception e) {
-            // TODO: handle exception
+            System.out.println("Something went Wrong");
         }
 
         return p;

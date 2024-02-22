@@ -6,6 +6,8 @@ public class salary {
 
     private String role;
 
+    private int id;
+
     public int getSalary() {
         return Salary;
     }
@@ -20,6 +22,14 @@ public class salary {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
 }
