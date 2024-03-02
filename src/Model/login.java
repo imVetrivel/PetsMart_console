@@ -1,7 +1,8 @@
 package Model;
 
 import java.sql.*;
-import Views.*;
+
+import Controller.Maincontroller;
 import connections.*;
 import resources.*;
 
@@ -38,7 +39,7 @@ public class login {
         } 
         catch (Exception e) {
             System.out.println("User Not Found");
-            start.login();
+             Maincontroller.begin();
             return null;
         }
     }
