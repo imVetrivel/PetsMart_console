@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import Model.Read;
 import Model.insert;
 import Model.update;
-import Views.customer;
+import Views.*;
 import resources.*;
 
 public class Customercontroller {
     
     public static Users u = new Users();
 
-   public static void Customercontrolle(Users q)
+   public static void Customer(Users q)
     {
         u=q;
     }
@@ -21,60 +21,7 @@ public class Customercontroller {
 
         if(choice == 1)
         {
-             ArrayList<category> c = Read.getpetcategory();
-             customer.getcategory(c);
-
-             int n = customer.disp();
-
-             if(n == 1)
-             {
-                 ArrayList<variety> v = Read.getvariety();
-                 customer.getvariety(v);
-
-                 int z = customer.disp();
-
-                 if(z == 1)
-                 {
-                    ArrayList<pets> p = Read.getpets();
-                    customer.getpets(p);
-
-                    int confirm = customer.confirm();
-
-                    if(confirm == 1)
-                    {
-                        int p_id = customer.buy();
-                        if(!update.check(p_id))
-                        {
-                            customer.invalidid();
-                            User();
-                            return;
-                        }
-                        else
-                        {
-                            String d=customer.getdate();
-                            String breed = Read.getbreed(p_id);
-                            shoplog s = update.buy(p_id,d,u.getName(),breed,"Purchased");
-                            insert.insertlog(s, u);
-                            update.cust_buy(p_id);
-                        }
-                    }
-                    else if(confirm == 2)
-                    {
-                        User();
-                        return;
-                    }
-                 }
-                 else if (z == 2)
-                 {
-                    User();
-                    return;
-                 }
-             }
-             else if(n == 2)
-             {
-                User();
-                return;
-             }
+            buyPet();
         }
 
         else if(choice == 2)
@@ -149,4 +96,61 @@ public class Customercontroller {
         }
         User();
     }
+
+    public static void buyPet()
+    {
+        ArrayList<category> c = Read.getpetcategory();
+        customer.getcategory(c);
+
+        int n = customer.disp();
+
+        if(n == 1)
+        {
+            ArrayList<variety> v = Read.getvariety();
+            customer.getvariety(v);
+
+            int z = customer.disp();
+
+            if(z == 1)
+            {
+               ArrayList<pets> p = Read.getpets();
+               customer.getpets(p);
+
+               int confirm = customer.confirm();
+
+               if(confirm == 1)
+               {
+                   int p_id = customer.buy();
+                   if(!update.check(p_id))
+                   {
+                       customer.invalidid();
+                       User();
+                       return;
+                   }
+                   else
+                   {
+                       String d=customer.getdate();
+                       String breed = Read.getbreed(p_id);
+                       shoplog s = update.buy(p_id,d,u.getName(),breed,"Purchased");
+                       insert.insertlog(s, u);
+                       update.cust_buy(p_id);
+                   }
+               }
+               else if(confirm == 2)
+               {
+                   return;
+               }
+            }
+            else if (z == 2)
+            {
+               return;
+            }
+        }
+        else if(n == 2)
+        {
+           return;
+        }
+    }
+
+
 }

@@ -37,7 +37,7 @@ public class Maincontroller {
          Admincontroller.admin();
       }
        else if (u.getRole().equals("Customer")) {
-         Customercontroller.Customercontrolle(u);
+         Customercontroller.Customer(u);
          Customercontroller.User();
       } 
       else if (u.getS_role().equals("Receptionist")) {
