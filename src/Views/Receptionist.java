@@ -5,7 +5,4 @@ public class Receptionist {
     {
         System.out.println("ansabbc");
     }
-
-
-    
 }
